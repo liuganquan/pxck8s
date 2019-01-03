@@ -1,5 +1,5 @@
 FROM percona/percona-xtradb-cluster:5.7.19
 MAINTAINER andrewliu <andrew.liu@gh-ca.com>
 
-COPY entrypoint.sh /entrypoint.sh
-COPY entrypoint.sh /startup-scripts/entrypoint.sh
+
+RUN sed -i -e "s/pxc_strict_mode=ENFORCING/pxc_strict_mode=PERMISSIVE/g" /etc/mysql/percona-xtradb-cluster.conf.d/wsrep.cnf
